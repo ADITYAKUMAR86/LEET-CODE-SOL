@@ -32,3 +32,20 @@ public:
         return false;
     }
 };
+
+class Solution {                                                  // containsNearbyDuplicateII
+public:
+    bool containsNearbyDuplicate(vector<int>& nums, int k) {
+        unordered_map <int, int> mpp;
+        for (int i = 0 ; i < nums.size(); i++){
+            if(mpp.find(nums[i]) != mpp.end() && (i - mpp[nums[i]] <= k)){
+                // if(i - nums[i] <= k)
+                return true;
+                // if(i - nums[i] >= k)
+                // return false;
+            }
+            mpp[nums[i]] = i;
+        }
+        return false;
+    }
+};
